@@ -73,7 +73,7 @@ export default function ProductModal({ open, mode, initialProduct, onClose, onSu
                             className="input"
                             value={name}
                             onChange={(e) => setName(e.target.value)}
-                            placeholder="Например, Холодильник LG"
+                            placeholder="Например, Холодильник"
                             autoFocus
                             required
                         />

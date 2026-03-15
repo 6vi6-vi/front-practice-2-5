@@ -1,15 +1,6 @@
 import React from "react";
 
 export default function ProductItem({ product, onEdit, onDelete }) {
-    const getStockStatus = (stock) => {
-        if (stock === 0) return { text: "Нет в наличии", class: "stock--out" };
-        if (stock < 5) return { text: "Мало", class: "stock--low" };
-        if (stock < 15) return { text: "Средне", class: "stock--medium" };
-        return { text: "Много", class: "stock--high" };
-    };
-
-    const stockStatus = getStockStatus(product.stock);
-
     return (
         <div className="productCard">
             <div className="productCard__header">
@@ -26,8 +17,8 @@ export default function ProductItem({ product, onEdit, onDelete }) {
                 <div className="productCard__price">
                     {product.price.toLocaleString()} ₽
                 </div>
-                <div className={`productCard__stock ${stockStatus.class}`}>
-                    {stockStatus.text}: {product.stock} шт.
+                <div className={`productCard__stock`}>
+                    На складе: {product.stock} шт.
                 </div>
             </div>
 

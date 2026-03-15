@@ -8,112 +8,110 @@ const port = 3000;
 let products = [
     {
         id: nanoid(6),
-        name: 'Стиральная машина Samsung',
+        name: 'Стиральная машина',
         category: 'Бытовая техника',
-        description: 'Фронтальная загрузка, 7 кг, класс A+++, 1200 об/мин',
-        price: 34990,
+        description: '7 кг, 1200 об/мин',
+        price: 35000,
         stock: 15
     },
     {
         id: nanoid(6),
-        name: 'Холодильник LG',
+        name: 'Холодильник',
         category: 'Бытовая техника',
-        description: 'No Frost, общий объем 325 л, инверторный компрессор',
-        price: 45990,
+        description: 'No Frost, общий объем 325 л',
+        price: 46000,
         stock: 8
     },
     {
         id: nanoid(6),
-        name: 'Телевизор Sony Bravia',
+        name: 'Телевизор',
         category: 'Электроника',
-        description: '4K UHD, 55", Smart TV, HDR, Android TV',
-        price: 67990,
+        description: 'Smart TV, HDR, Android TV',
+        price: 68000,
         stock: 12
     },
     {
         id: nanoid(6),
-        name: 'Ноутбук ASUS ROG',
+        name: 'Ноутбук',
         category: 'Компьютеры',
-        description: 'Intel Core i7, 16GB RAM, 512GB SSD, RTX 3060',
-        price: 89990,
+        description: 'Intel Core i7, 16GB RAM',
+        price: 90000,
         stock: 5
     },
     {
         id: nanoid(6),
-        name: 'Смартфон iPhone 15',
+        name: 'iPhone 15',
         category: 'Смартфоны',
-        description: '6.1", A16 Bionic, 128GB, двойная камера 48MP',
-        price: 89990,
+        description: '128GB, двойная камера',
+        price: 90000,
         stock: 23
     },
     {
         id: nanoid(6),
-        name: 'Планшет iPad Pro',
+        name: 'Планшет',
         category: 'Электроника',
-        description: '12.9", M2 чип, 256GB, Liquid Retina XDR',
-        price: 109990,
+        description: '256GB',
+        price: 110000,
         stock: 7
     },
     {
         id: nanoid(6),
-        name: 'Наушники Sony WH-1000XM5',
+        name: 'Наушники',
         category: 'Аксессуары',
-        description: 'Беспроводные, шумоподавление, 30ч работы',
-        price: 27990,
+        description: 'Беспроводные, шумоподавление',
+        price: 28000,
         stock: 42
     },
     {
         id: nanoid(6),
-        name: 'Кофемашина DeLonghi',
+        name: 'Кофемашина',
         category: 'Бытовая техника',
-        description: 'Автоматическая, 15 бар, капучинатор',
-        price: 45990,
+        description: 'Автоматическая',
+        price: 46000,
         stock: 11
     },
     {
         id: nanoid(6),
-        name: 'Фитнес-браслет Xiaomi',
+        name: 'Фитнес-браслет',
         category: 'Аксессуары',
-        description: 'Mi Band 8, AMOLED экран, пульсометр',
-        price: 3990,
+        description: 'AMOLED экран, пульсометр',
+        price: 4000,
         stock: 150
     },
     {
         id: nanoid(6),
-        name: 'Монитор Samsung Odyssey',
+        name: 'Монитор',
         category: 'Компьютеры',
-        description: '27", 240Hz, 1ms, QLED, изогнутый',
-        price: 34990,
+        description: '240Hz, изогнутый',
+        price: 35000,
         stock: 18
     },
     {
         id: nanoid(6),
-        name: 'Пылесос Dyson V15',
+        name: 'Пылесос',
         category: 'Бытовая техника',
-        description: 'Беспроводной, лазерная подсветка, 60 мин работы',
-        price: 59990,
+        description: 'Беспроводной, лазерная подсветка',
+        price: 60000,
         stock: 6
     },
     {
         id: nanoid(6),
-        name: 'Умные часы Apple Watch',
+        name: 'Умные часы',
         category: 'Аксессуары',
-        description: 'Series 9, GPS, Always-On Retina, кислород в крови',
-        price: 42990,
+        description: 'GPS, кислород в крови',
+        price: 43000,
         stock: 21
     }
 ];
 
 app.use(express.json());
 
-// CORS для React приложения
 app.use(cors({
     origin: "http://localhost:3001",
     methods: ["GET", "POST", "PATCH", "DELETE"],
     allowedHeaders: ["Content-Type", "Authorization"],
 }));
 
-// Middleware для логирования запросов
 app.use((req, res, next) => {
     res.on('finish', () => {
         console.log(`[${new Date().toISOString()}] [${req.method}] ${res.statusCode} ${req.path}`);
@@ -124,7 +122,6 @@ app.use((req, res, next) => {
     next();
 });
 
-// Функция-помощник для получения товара из списка
 function findProductOr404(id, res) {
     const product = products.find(p => p.id == id);
     if (!product) {
@@ -134,7 +131,6 @@ function findProductOr404(id, res) {
     return product;
 }
 
-// POST /api/products
 app.post("/api/products", (req, res) => {
     const { name, category, description, price, stock } = req.body;
 
@@ -151,12 +147,10 @@ app.post("/api/products", (req, res) => {
     res.status(201).json(newProduct);
 });
 
-// GET /api/products
 app.get("/api/products", (req, res) => {
     res.json(products);
 });
 
-// GET /api/products/:id
 app.get("/api/products/:id", (req, res) => {
     const id = req.params.id;
 
@@ -166,14 +160,12 @@ app.get("/api/products/:id", (req, res) => {
     res.json(product);
 });
 
-// PATCH /api/products/:id
 app.patch("/api/products/:id", (req, res) => {
     const id = req.params.id;
 
     const product = findProductOr404(id, res);
     if (!product) return;
 
-    // Нельзя PATCH без полей
     if (!req.body || Object.keys(req.body).length === 0) {
         return res.status(400).json({
             error: "Nothing to update",
@@ -191,7 +183,6 @@ app.patch("/api/products/:id", (req, res) => {
     res.json(product);
 });
 
-// DELETE /api/products/:id
 app.delete("/api/products/:id", (req, res) => {
     const id = req.params.id;
 
@@ -200,16 +191,13 @@ app.delete("/api/products/:id", (req, res) => {
 
     products = products.filter((p) => p.id != id);
 
-    // 204 без тела
     res.status(204).send();
 });
 
-// 404 для всех остальных маршрутов
 app.use((req, res) => {
     res.status(404).json({ error: "Not found" });
 });
 
-// Глобальный обработчик ошибок
 app.use((err, req, res, next) => {
     console.error("Unhandled error:", err);
     res.status(500).json({ error: "Internal server error" });
