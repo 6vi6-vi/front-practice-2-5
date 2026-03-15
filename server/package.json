@@ -1,0 +1,25 @@
+{
+  "dependencies": {
+    "cors": "^2.8.6",
+    "express": "^5.2.1",
+    "nanoid": "^5.1.6"
+  },
+  "name": "front-practice-2-5",
+  "version": "1.0.0",
+  "description": "Скриншоты для Практического задания 3 находятся в pdf-файле",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/6vi6-vi/front-practice-2-5.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/6vi6-vi/front-practice-2-5/issues"
+  },
+  "homepage": "https://github.com/6vi6-vi/front-practice-2-5#readme"
+}
